@@ -1,4 +1,4 @@
-/* FILE: shellpipe.c */
+/* FILE: shellpipe.c  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -22,8 +22,11 @@ int main  (int argc, char **argv)
 	/* N.B. NON andiamo a COPIARE le stringhe corrispondenti ai vari argv[i] (anche perche' NON abbiamo allocato la memoria per i vari puntatori di com1 e com2, ma semplicemente copiamo il puntatore ai vari argv[i] nei vari elementi di com1 e com2 in modo da rendere piu' chiaro il codice */
 	for (i=1; i < argc && strcmp (argv[i], "!"); i++) 
 		com1[i-1] = argv[i];	
-    	com1[i-1] = (char *)0;  /* terminatore della lista di stringhe */   
-	i++;   
+    
+	com1[i-1] = (char *)0;  /* terminatore della lista di stringhe */   
+	i++;	/* viene incrementato l' indice i in modo che punti all' argomento successivo alla stringa "!" */
+	
+	//scorre gli argomenti restanti
 	for (j = 1; i < argc ; i++, j++) 
 		com2[j-1] = argv[i];
   	com2[j-1] = (char *)0;  /* terminatore della lista di stringhe */
@@ -37,7 +40,7 @@ int main  (int argc, char **argv)
 	{
 		/* figlio: lo chiamiamo processo P2 */
 						
-		/* il figlio P2 esegue il comando intero: crea la pipe */
+		/* il figlio P2 esegue il comando intero: crea la pipe per la comunicazione con il nipote (suo figlio P3) */
 		if (pipe(piped) < 0 )  
 		{ 	printf("Errore in creazione pipe\n");
 			exit(-1) /* torniamo un valore che verra' interpretato 255 dal padre (cioe' P1)  */; 
@@ -50,9 +53,9 @@ int main  (int argc, char **argv)
 		if (pid == 0)      /* P3: figlio del FIGLIO P2 */
 		{	
 			close(1);  /* lo standard output va messo sulla pipe */
-			dup(piped[1]); 
+			dup(piped[1]); //avendo chiuso lo stdout, la copia del fd dell' estremità di scrittura della pipe avrà fd=1, quindi dopo la chiamata dup lo stdout è reindirizzato sull' estremità di scrittura della pipe
 			close(piped[0]); close(piped[1]); /* non servono piu' */
-        		execvp(com1[0], com1);  
+        	execvp(com1[0], com1);  
         		exit(-1);   /* errore in caso si ritorni qui */
 		}       
 		/*  processo P2 (padre di P3) */

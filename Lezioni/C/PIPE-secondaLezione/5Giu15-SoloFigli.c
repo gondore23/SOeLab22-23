@@ -1,4 +1,4 @@
-/* Soluzione della Prova d'esame del 5 Giugno 2015 - SOLO Parte C */
+// Soluzione della Prova d'esame del 5 Giugno 2015 - SOLO Parte C
 /* VERSIONE RIDOTTA SENZA CREAZIONE NIPOTI */
 #include <stdio.h>
 #include <string.h>
@@ -68,6 +68,7 @@ int main(int argc, char **argv)
 			/* in caso di errori nei figli o nei nipoti decidiamo di tornare dei numeri negativi (-1 che corrispondera' per il padre al valore 255, -2 che corrispondera' a 254, etc.) che non possono essere valori accettabili di ritorno dato che il comando tail, usato avendo implementato la ridirezione in ingresso, puo' tornare solo 0 (perche' avra' sempre successo) */
 
 			/* Chiusura delle pipe non usate nella comunicazione con il padre */
+			/* Ogni figlio (che comunica tramite una sola pipe), deve chiudere oltre che tutte le pipe in uscita anche tutte le altre pipe in entrata da lui non designate ad essere usate*/
 			for (k=0; k < M; k++)
 			{
 				close(piped[k][0]);

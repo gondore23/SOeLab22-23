@@ -1,0 +1,4 @@
+F S UID          PID    PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+0 S gondo       4528    4510  0  80   0 -  5061 do_wai 12:56 pts/0    00:00:00 bash
+4 R gondo       5324    4528  0  80   0 -  5419 -      14:33 pts/0    00:00:00 ps -lf
+0 S gondo       5325    4528  0  80   0 -  4431 pipe_r 14:33 pts/0    00:00:00 tee temp
