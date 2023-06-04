@@ -60,7 +60,7 @@ int main  (int argc, char **argv)
 		}       
 		/*  processo P2 (padre di P3) */
 		close(0);  /* lo standard input va preso dalla pipe */
-       		dup(piped[0]);  
+       		dup(piped[0]);  //avendo chiuso stdin la copia del fd dell' estremita di lettura della pipe avra fd=0, quindi dopo la chiamata a dup lo stdin e reindirizzato sull' etremita di lettura della pipe
         	close(piped[0]); close(piped[1]); /* non servono piu' */
 		execvp(com2[0], com2);  
         	exit(-1);   /* errore in caso si ritorni qui */

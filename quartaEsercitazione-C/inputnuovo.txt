@@ -1,0 +1,17 @@
+123456789
+Ciao, questa linea e' lunga tipo 35
+Per fare questa bazza di sapere quanto e' lunga ogni linea che sto scrivendo mi sono fidato e affidato e duffy duck a wordcounter.net yess, questa ne ha 155
+ora faro' un po' di bazze strane, linee vuote ecc, linee uguali una dietro l' altra, non so bene quali siano i casi limite in realta', anzi si lo so, devo arrivare a 512 e 513 caratteri, mo arrivo a 512 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ora faro' un po' di bazze strane, linee vuote ecc, linee uguali una dietro l' altra, non so bene quali siano i casi limite in realta', anzi si lo so, devo arrivare a 512 e 513 caratteri, mo arrivo a 513 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!
+
+
+
+
+
+
+
+
+ciuaoda
+
+
+
