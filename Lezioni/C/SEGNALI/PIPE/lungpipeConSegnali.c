@@ -6,6 +6,7 @@
 
 int count;		/* variabile GLOBALE per contare i caratteri scritti sulla pipe (che non verranno letti da nessuno!) */
 
+//handler
 void alrm_action(int signo)
 {
 	printf("write bloccata dopo %d caratteri (ricevuto segnale SIGALRM che e' il nro %d)\n", count, signo);
@@ -17,7 +18,7 @@ int main()
    int piped[2]; 	/* array per i lati lettura/scrittura della pipe  */
    char c = 'x'; 	/* non serviva inizializzare il valore del carattere che viene scritto sulla pipe, tanto nessuno lo legge */
 
-	if (pipe(piped) < 0) { printf("Errore\n"); exit(1); }
+	if (pipe(piped) < 0) { printf("Errore\n"); exit(1); }	//l' unico processo si comporta come scrittore e come potenziale lettore e quindi NON riceve il segnale SIGPIPE
 
 	/* agganciamo l'allarme al gestore specifico */
 	signal(SIGALRM, alrm_action);

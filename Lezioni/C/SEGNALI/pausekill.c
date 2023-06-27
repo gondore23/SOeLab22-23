@@ -1,4 +1,5 @@
 /* FILE: pausekill.c  */
+#define BELL "\007\007\007\007"
 #include <stdio.h>
 #include <signal.h>
 #include <unistd.h>
@@ -9,6 +10,7 @@ int ntimes = 0; /* variabile globale */
 void handler(int signo)
 {
 	printf ("Processo %d ricevuto #%d volte il segnale %d\n", getpid(), ++ntimes, signo);
+	printf(BELL);
 }
 
 int main ()
@@ -30,7 +32,7 @@ int main ()
 			printf("FIGLIO %d\n", getpid());
 			sleep(1);
 			kill(ppid, SIGUSR1);
-			pause();
+			pause();	//si ferma in attesa di un segnale
 		}	
 	}
 	else 	/* ATTENZIONE IN QUESTO CASO DOBBIAMO METTERE l'ELSE PERCHE' IL FIGLIO NON ESEGUE EXIT MA UN CICLO INFINITO */
@@ -39,11 +41,11 @@ int main ()
 		for(;;) /* ciclo infinito */
 		{ 
 			printf("PADRE %d\n", getpid());
-			pause();
+			pause();	//si ferma in attesa di un segnale
 			sleep(1);
 			kill(pid, SIGUSR1);
 		}
 	}
 	
-	/* NOTA BENE: il padre NON può aspettare il figlio in questo caso! */
+	/* NOTA BENE: il padre NON può aspettare il figlio in questo caso, perchè non ritorna mai! */
 }

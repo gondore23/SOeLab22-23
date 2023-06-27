@@ -8,7 +8,8 @@
 #define FALSE 0
 #define BELLS "\007\007\007"
 
-int alarm_flag = FALSE;
+//VARIABILI GLOBALI
+int alarm_flag = FALSE;	//due copie, una per ogni processo I guess
 
 void setflag(int signo)
 {
@@ -27,7 +28,8 @@ int main (int argc, char **argv)
 		 exit(1);
 	}
 
-	/* il primo parametro deve essere il numero di minuti che deve passare prima di far scattare l'allarme e il resto dei parametri sono le stringhe che saranno scritte sullo standard output quando scatta l'allarme */
+	/* il primo parametro deve essere il numero di minuti che deve passare prima di far scattare l'allarme 
+	e il resto dei parametri sono le stringhe che saranno scritte sullo standard output quando scatta l'allarme */
 	if ((nsecs = atoi(argv[1]) * 60 ) <= 0)
 	{ 	printf ("Errore nel valore del tempo\n");
 		exit(2);
@@ -42,14 +44,15 @@ int main (int argc, char **argv)
 
 	if (pid == 0)
 	{
-		/* figlio */
+		/* FIGLIO */
 		/* installa l'azione specifica da eseguire alla ricezione del segnale SIGALRM */
 		signal(SIGALRM, setflag);
 		/* attiva l'allarme per il numero di secondi calcolato dal primo parametro (fornito in minuti) */
 		alarm(nsecs);
 		/* attende l'arrivo di un qualunque segnale */
 		pause();
-		/* se il segnale arrivato era quello dell'allarme, allora stampa su standard output le stringhe passate come parametri dal secondo in poi */
+		/* se il segnale arrivato era quello dell'allarme, allora 
+		stampa su standard output le stringhe passate come parametri dal secondo in poi */
 		if (alarm_flag == TRUE)
 	      	{ 
 			printf(BELLS); /* viene suonata la 'campanella' per 3 volte */
@@ -60,7 +63,7 @@ int main (int argc, char **argv)
 		exit(0); 	/* figlio termina */
 	}
 
-	/* padre */
+	/* PADRE */
 	printf("Creazione del processo %d\n", pid);
 	/* padre termina: simulazione esecuzione in background */
 	exit(0);
